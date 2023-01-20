@@ -6,17 +6,17 @@ var pwdCriteria = {
   pwdLength: 0,
 
   //array to hold lowercase letters
-  var alpha = "lowercase"
+  pwdLowercase: ["a", "b", "c", "d", "e", "f", "g", "h", "i ", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v ", "w", "x", "y", "z"],
 
-//array to hold uppercase letters
-var bravo = "uppercase"
+  //array to hold uppercase letters
+  pwdUpperCase: ["A", "B", "C", "D,", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
 
-//array to hold numbers
-var charlie = "numeric"
+  //array to hold numbers
+  pwdNumber: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
 
-//array yo hold special characters
-var delta: "special characters";
-
+  //array yo hold special characters
+  pwdCharacter: ["!", "\"", "#", "$", "%", "&", "\'", "(", ")", "*", "+", ",",
+  "-", ".", "/", "\\", ":", ";", "<", ">", "=", "?", "@", "[", "]", "^", "_", "`", "{", "}", "|", "~"]//32
 }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -35,8 +35,7 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
   var result = "";
-  var passwordLength = 0(prompt("8 to 128 length"))
-  console.log(passwordLength);
+
   var upperCase;
   var lowerCase;
   var numbers;
@@ -65,38 +64,43 @@ while (passwordLength >= 8 && passwordLength <= 128) {
         alert(" Password must be between 8 and 128 characters.");
         return " Your secure password";
       }
-    
+
       showPrompts();
+
       while (pwdCriteria.pwdLength < passwordLength) {
         if (lowerCase === false && upperCase === false && numbers === false && specialChar === false) {
           alert("You must use at least one requirement of lowercase , uppercase, numbers or special charaters")
           showPrompts();
+
         }
+
         else {
-          if (lowerCase === true && passwordReq < passwordLength) {
-            var lowerCase = passwordReq.passwordLowerCase[Math.floor(Math.random())]
-            result = result + lowerCase;
-            passwordReq.passwordLength++;
+          if (lowerCase === true && pwdCriteria < pwdLength) {
+            var lc = pwdCriteria.pwdLowercase[Math.floor(Math.random() * 26)]
+            result = result + lc;
+            pwdCriteria.pwdLength++;
           }
-          if (specialChar === true && passwordLength.passwordLength < passwordLength) {
-            var specialChar = passwordReq.passwordCharater[Math.floor(Math.random())]
-            result = result + specialChar;
-            passwordReq.passwordLength++;
+
+          if (specialChar === true && pwdCriteria.pwdLength < passwordLength) {
+            var sc = pwdCriteria.pwdCharacter[Math.floor(Math.random() * 32)]
+            result = result + sc;
+            pwdCriteria.pwdLength++;
           }
-          if (upperCase === true && passwordReq.passwordLength) {
-            var upperCase = passwordReq.passwordUpperCase[Math.floor(Math.random())]
-            result = result + upperCase;
-            passwordReq.passwordLength++;
+          if (upperCase === true && pwdCriteria.pwdLength) {
+            var uc = pwdCriteria.pwdUpperCase[Math.floor(Math.random() * 26)]
+            result = result + uc;
+            pwdCriteria.pwdLength++;
           }
-          if (numbers === true && passwordReq.passwordLength < passwordLength) {
-            var number = passwordReq.passwordNum[Math.floor(Math.random())]
-            result = result + numbers;
-            passwordReq.passwordLength++
+          if (numbers === true && pwdCriteria.pwdLength < passwordLength) {
+            var num = pwdCriteria.pwdNumber[Math.floor(Math.random() * 10)]
+            result = result + num;
+            pwdCriteria.pwdLength++;
           }
         }
       }
     }
   }
+
   function showPrompts() {
     lowerCase = confirm("Do you want to use lower case letters?");
     upperCase = confirm(" Do you want upper case letters?");
