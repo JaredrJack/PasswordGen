@@ -1,5 +1,5 @@
 # PasswordGen
-![Alt text] ["./images/passgen.jpg"]
+![Alt text] ["./assets./passgen.jpg"]
 
 # Created this password generator using my Javascript skills. 
 
@@ -10,6 +10,8 @@
 ## Description
 - Created this password generator using my Javascript skills. When the user clicks " Generate Password" this display prompts the users can use to meet the password requirements.
 ## Deployed Site
+- https://github.com/JaredrJack/PasswordGen
+-
 
 ## Contact
 - jaredrjack93@icloud.com
