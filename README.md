@@ -1,17 +1,20 @@
 # PasswordGen
-![Alt text] [.\Develop\assets\passgen.jpg]
+![passgen](https://user-images.githubusercontent.com/120280613/229226231-1b15cf4c-70ab-451b-9bce-2182ef3793c0.jpg)
+
 
 # Created this password generator using my Javascript skills. 
 
 ##### Table of Contents
-[Description](#description)
-[Deployed site](#deployedsite)
-[Contact](#contact)
+-[Description](#description)
+-[Deployed site](#deployedsite)
+-[Contact](#contact)
+
 ## Description
 - Created this password generator using my Javascript skills. When the user clicks " Generate Password" this display prompts the users can use to meet the password requirements.
+
 ## Deployed Site
-- https://github.com/JaredrJack/PasswordGen
--
+- https://jaredrjack.github.io/PasswordGen/
+-live Server - http://127.0.0.1:5500/index.html
 
 ## Contact
 - jaredrjack93@icloud.com
