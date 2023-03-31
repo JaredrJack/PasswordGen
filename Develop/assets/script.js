@@ -1,25 +1,74 @@
-// Assignment code here
+// Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-var pwdCriteria = {
+// Created Arrays of Possible Character Choices
+var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+var upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var special = ['@', '%', '+', '/', "'", '!', '#', '$', '^', '?', ':', ',', ')', '(', '}', '{', ']', '[', '~', '-', '_', '.'
+];
 
-  pwdLength: 0,
+// Created function to ask user which options and made conditional statements to ensure minimum option requirements were met.
+function questions() {
+  var isValid = false;
+  do {
+    var length = prompt("Choose password length between 8 and 128 characters");
+    var askNumbers = confirm("Do you want your password to include numbers?");
+    var askLowerCase = confirm("Do you want your password to include lower case letters?");
+    var askUpperCase = confirm("Do you want your password to include upper case letters?");
+    var askSpecial = confirm("Do you want your password to include special characters?");
+    var responses = {
+      length: length,
+      askNumbers: askNumbers,
+      askLowerCase: askLowerCase,
+      askUpperCase: askUpperCase,
+      askSpecial: askSpecial
+    } 
+    if((length < 8)||(length > 128))
+    alert("Choose number between 8 and 128");
+    else if((!askNumbers)&&(!askLowerCase)&&(!askUpperCase)&&(!askSpecial))
+    alert("Must choose at least one type.");
+    else
+    isValid = true;
 
-  //array to hold lowercase letters
-  pwdLowercase: ["a", "b", "c", "d", "e", "f", "g", "h", "i ", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v ", "w", "x", "y", "z"],
-
-  //array to hold uppercase letters
-  pwdUpperCase: ["A", "B", "C", "D,", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
-
-  //array to hold numbers
-  pwdNumber: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-
-  //array yo hold special characters
-  pwdCharacter: ["!", "\"", "#", "$", "%", "&", "\'", "(", ")", "*", "+", ",",
-  "-", ".", "/", "\\", ":", ";", "<", ">", "=", "?", "@", "[", "]", "^", "_", "`", "{", "}", "|", "~"]//32
+  } while(!isValid);
+  return responses;
 }
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+// This function joins all the user responses and then creates the result - a strong password.
+function generatePassword() {
+  var passwordOptions = questions();
+  var possibleCombo = [];
+  var finalPassword = "";
+
+  if (passwordOptions.askNumbers) {
+    for (var i of numbers)
+      possibleCombo.push(i);
+  }
+  if (passwordOptions.askLowerCase) {
+    for (var i of lowerCase)
+      possibleCombo.push(i);
+  }
+  if (passwordOptions.askUpperCase) {
+    for (var i of upperCase)
+      possibleCombo.push(i);
+  }
+  if (passwordOptions.askSpecial) {
+    for (var i of special)
+      possibleCombo.push(i);
+  }
+
+
+  console.log(possibleCombo);
+
+
+  for (var i = 0; i < passwordOptions.length; i++) {
+    finalPassword += possibleCombo[Math.floor(Math.random() * possibleCombo.length)];
+    
+  }
+  console.log(finalPassword);
+
+  return finalPassword;
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -27,84 +76,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-function generatePassword() {
-  var result = "";
-
-  var upperCase;
-  var lowerCase;
-  var numbers;
-  var specialChar;
-}
-
-passwordLength = 0;
-pwdCriteria.pwdLength = 0;
-result = "";
-
-
-while (passwordLength >= 8 && passwordLength <= 128) {
-  passwordLength = prompt("Please enter number greater than 8 of less than 128");
-
-  if (passwordLength === null) {
-    return "Your secured password";
-  }
-
-  else {
-    if (!isFinite(passwordLength)) {
-      alert(" Please enter number");
-      return "Your secured password";
-    }
-    else {
-      if (passwordLength < 8 || passwordLength > 128) {
-        alert(" Password must be between 8 and 128 characters.");
-        return " Your secure password";
-      }
-
-      showPrompts();
-
-      while (pwdCriteria.pwdLength < passwordLength) {
-        if (lowerCase === false && upperCase === false && numbers === false && specialChar === false) {
-          alert("You must use at least one requirement of lowercase , uppercase, numbers or special charaters")
-          showPrompts();
-
-        }
-
-        else {
-          if (lowerCase === true && pwdCriteria < pwdLength) {
-            var lc = pwdCriteria.pwdLowercase[Math.floor(Math.random() * 26)]
-            result = result + lc;
-            pwdCriteria.pwdLength++;
-          }
-
-          if (specialChar === true && pwdCriteria.pwdLength < passwordLength) {
-            var sc = pwdCriteria.pwdCharacter[Math.floor(Math.random() * 32)]
-            result = result + sc;
-            pwdCriteria.pwdLength++;
-          }
-          if (upperCase === true && pwdCriteria.pwdLength) {
-            var uc = pwdCriteria.pwdUpperCase[Math.floor(Math.random() * 26)]
-            result = result + uc;
-            pwdCriteria.pwdLength++;
-          }
-          if (numbers === true && pwdCriteria.pwdLength < passwordLength) {
-            var num = pwdCriteria.pwdNumber[Math.floor(Math.random() * 10)]
-            result = result + num;
-            pwdCriteria.pwdLength++;
-          }
-        }
-      }
-    }
-  }
-
-  function showPrompts() {
-    lowerCase = confirm("Do you want to use lower case letters?");
-    upperCase = confirm(" Do you want upper case letters?");
-    number = confirm("Do you want to use numbers?");
-    specialChar = confirm("Do you want to use any special characters?");
-  }
-}
