@@ -6,7 +6,7 @@
 # Created this password generator using my Javascript skills. 
 
 ##### Table of Contents
--[Description](#description)
+--[Description](#description)
 -[Deployed site](#deployedsite)
 -[Contact](#contact)
 
@@ -15,7 +15,6 @@
 
 ## Deployed Site
 - https://jaredrjack.github.io/PasswordGen/
--live Server - http://127.0.0.1:5500/index.html
 
 ## Contact
 - jaredrjack93@icloud.com
