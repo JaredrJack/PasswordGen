@@ -6,7 +6,7 @@
 # Created this password generator using my Javascript skills. 
 
 ##### Table of Contents
-[Description](#Description)
+[Description](#description)
 [Deployed site](#deployedsite)
 [Contact](#contact)
 
