@@ -6,9 +6,9 @@
 # Created this password generator using my Javascript skills. 
 
 ##### Table of Contents
---[Description](#description)
--[Deployed site](#deployedsite)
--[Contact](#contact)
+[Description](#description)
+[Deployed site](#deployedsite)
+[Contact](#contact)
 
 ## Description
 - Created this password generator using my Javascript skills. When the user clicks " Generate Password" this display prompts the users can use to meet the password requirements.
